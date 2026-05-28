@@ -1,0 +1,47 @@
+# ── Large data & generated artifacts ──────────────────────────────────────
+# Ignore contents but keep directory structure via .gitkeep
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+results/models/*
+!results/models/.gitkeep
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Jupyter ────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Editor backup files ────────────────────────────────────────────────────
+*~
+*.bak
+*.swp
+*.swo
+
+# ── Anaconda / local env ───────────────────────────────────────────────────
+anaconda_projects/
+.env
+.venv
+env/
+venv/
+
+# ── OS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs & temp ────────────────────────────────────────────────────────────
+*.log
+*.tmp
