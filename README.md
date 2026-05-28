@@ -1,6 +1,6 @@
 # Driver Behavior Analysis
 
-**Classifying driving style** (normal / aggressive / drowsy) from smartphone accelerometer and GPS data using classical ML and deep learning — with a rigorous **Leave-One-Driver-Out (LODO)** cross-validation protocol.
+**Classifying driving style** (normal / aggressive / economic) from smartphone accelerometer and GPS data using classical ML — with a rigorous **Leave-One-Driver-Out (LODO)** cross-validation protocol.
 
 ---
 
@@ -8,12 +8,13 @@
 
 ### LODO Cross-Validation (6 drivers, no data leakage)
 
-| Model | Accuracy | Macro F1 | F1 Normal | F1 Aggressive | F1 Drowsy |
+| Model | Accuracy | Macro F1 | F1 Normal | F1 Aggressive | F1 Economic |
 |---|---|---|---|---|---|
 | **Random Forest** | **0.619 ± 0.042** | **0.604 ± 0.049** | 0.660 | 0.650 | 0.502 |
 | XGBoost | 0.608 ± 0.036 | 0.602 ± 0.042 | 0.622 | 0.648 | 0.537 |
 | LightGBM | 0.602 ± 0.041 | 0.598 ± 0.046 | 0.613 | 0.643 | 0.537 |
-| LSTM | — | — | — | — | — |
+
+> **LSTM / CNN-LSTM** is implemented in `notebooks/04_lstm.ipynb` but not yet benchmarked — results will be added once training is complete.
 
 > LODO CV: each fold holds out one driver completely — the model never sees any windows from that driver during training. This is the hardest and most realistic evaluation for driver behaviour classification.
 
@@ -49,8 +50,10 @@
 | Trips | 40 |
 | Sensor | Smartphone (accelerometer ~10 Hz, GPS ~1 Hz) |
 | Road types | Motorway, Secondary |
-| Classes | Normal (0), Aggressive (1), Drowsy/Economic (2) |
+| Classes | Normal (0), Aggressive (1), Economic (2) |
 | Windows | 10,434 (5 s window, 2 s overlap) |
+
+> **Class label note:** The UAH-DriveSet uses the label `DROWSY`; this project maps it to *economic* driving to reflect its signal characteristics (smooth, low-intensity behaviour) rather than a literal drowsiness interpretation.
 | Features | 145 (statistical + FFT + physics-derived) |
 
 ---
